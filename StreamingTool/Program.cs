@@ -13,17 +13,19 @@ namespace StreamingTool
     public class Program
     {
         private static string PADir = @"C:\Program Files (x86)\Steam\steamapps\common\Project Arrhythmia\";
+        /// <summary>You are free to change this to any directory you want.</summary>
         private static string STRDir = @"D:\PAStream\Beatmap\";
         private static string PALvl = PADir + @"beatmaps\editor";
         private static string PAPre = PADir + @"beatmaps\prefabs";
         private static string PAThe = PADir + @"beatmaps\themes";
 
         private static BeatmapManager Manager;
-        private static int index;
 
         public static void Main()
         {
             Manager = new BeatmapManager();
+
+            Console.WriteLine("Awaiting keypresses.");
 
             //Give us an infinite loop
             while (true)
