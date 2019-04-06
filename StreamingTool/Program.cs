@@ -66,11 +66,3 @@ namespace StreamingTool
         }
     }
 }
-
-/// How's this going to work:
-/// Check which level it is going to be (cmd)
-/// Check the contents
-/// Changes stream data, etc
-/// Edits image a bit (cover image) ?? default PA image
-/// Publish to github
-/// Done.
