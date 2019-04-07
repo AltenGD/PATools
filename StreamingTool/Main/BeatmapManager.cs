@@ -2,6 +2,7 @@
 using StreamingTool.Main.Properties.PA;
 using System.IO;
 using Newtonsoft.Json;
+using System.Drawing;
 
 namespace StreamingTool.Main
 {
@@ -28,6 +29,11 @@ namespace StreamingTool.Main
                 var BeatmapMeta = JsonConvert.DeserializeObject<PAMetadata>(File.ReadAllText(BeatmapFolder + @"\metadata.lsb"));
 
                 CurrentInfo.Info = BeatmapMeta;
+
+                if (File.Exists(BeatmapFolder + @"\banner.jpg"))
+                    CurrentInfo.Image = new Bitmap(BeatmapFolder + @"\banner.jpg");
+                else
+                    CurrentInfo.Image = new Bitmap(lvlFolder + @"\default.jpg");
             }
             catch (System.Exception)
             {

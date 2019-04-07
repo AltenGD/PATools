@@ -7,6 +7,8 @@ using System.IO;
 using StreamingTool.Main.Properties;
 using StreamingTool.Main.Properties.PA;
 using StreamingTool.Main;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace StreamingTool
 {
@@ -36,7 +38,7 @@ namespace StreamingTool
 
                 Manager.setBeatmap(intIndex, PALvl);
 
-                var start = DateTime.Now;
+                var start = DateTime.Now.Millisecond;
 
                 //Artist
                 File.WriteAllText(STRDir + @"artist\link.txt", CurrentInfo.Info.Artist.Link);
@@ -59,7 +61,16 @@ namespace StreamingTool
                 File.WriteAllText(STRDir + @"song\t.txt", CurrentInfo.Info.Song.t.ToString());
                 File.WriteAllText(STRDir + @"song\title.txt", CurrentInfo.Info.Song.Title);
 
-                var end = DateTime.Now;
+                //Image
+                var bm = new Bitmap(CurrentInfo.Image);
+
+                if (File.Exists(STRDir + "image.png"))
+                    File.Delete(STRDir + "image.png");
+
+                bm.Save(STRDir + "image.png", ImageFormat.Png);
+                bm.Dispose();
+
+                var end = DateTime.Now.Millisecond;
 
                 Console.WriteLine($"Completed in under {end - start}ms");
             }
