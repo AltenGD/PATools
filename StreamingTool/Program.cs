@@ -36,7 +36,7 @@ namespace StreamingTool
 
                 int.TryParse(Index, out int intIndex);
 
-                Manager.setBeatmap(intIndex, PALvl);
+                Manager.setBeatmap(intIndex + 1, PALvl);
 
                 var start = DateTime.Now.Millisecond;
 
