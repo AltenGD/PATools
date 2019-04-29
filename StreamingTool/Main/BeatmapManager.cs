@@ -32,6 +32,8 @@ namespace StreamingTool.Main
 
                 if (File.Exists(BeatmapFolder + @"\banner.jpg"))
                     CurrentInfo.Image = new Bitmap(BeatmapFolder + @"\banner.jpg");
+                else if (File.Exists(BeatmapFolder + @"\level.jpg"))
+                    CurrentInfo.Image = new Bitmap(BeatmapFolder + @"\level.jpg");
                 else
                     CurrentInfo.Image = new Bitmap(lvlFolder + @"\default.jpg");
             }
