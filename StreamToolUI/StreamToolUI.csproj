@@ -33,8 +33,4 @@
     <ProjectReference Include="..\StreamingTool\StreamingTool.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Main\Tools\" />
-  </ItemGroup>
-
 </Project>

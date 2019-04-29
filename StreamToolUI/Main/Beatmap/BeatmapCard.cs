@@ -18,6 +18,8 @@ using osuTK.Graphics;
 using StreamingTool.Main.Properties.PA;
 using StreamToolUI.Main.Beatmap.Components;
 using StreamToolUI.Main.Graphics.Sprites;
+using StreamToolUI.Main.Screens;
+using StreamToolUI.Main.Screens.Backgrounds;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
@@ -32,6 +34,9 @@ namespace StreamToolUI.Main.Beatmap
     {
         private Vector2 size = new Vector2(330, 150);
         private BeatmapUsecase beatmapUseCase;
+
+        [Resolved(canBeNull: true)]
+        private BackgroundScreenStack backgroundStack { get; set; }
 
         public PAMetadata meta;
         public Box Background;
@@ -152,6 +157,36 @@ namespace StreamToolUI.Main.Beatmap
                     //TweenEdgeEffectTo(deselectedParams, 500, Easing.OutExpo);
                     break;
             }
+
+            if (Directory != null)
+            {
+                if (File.Exists(Directory + @"\banner.jpg"))
+                {
+                    backgroundStack.Push(new BackgroundScreenBlack());
+                    FileStream image = File.Open(Directory + @"\banner.jpg", FileMode.Open);
+                    var background = new BackgroundScreenCustom(image);
+                    backgroundStack.Push(background);
+                    background.OnLoadComplete += _ =>
+                    {
+                        image.Close();
+                    };
+                }
+                else if (File.Exists(Directory + @"\level.jpg"))
+                {
+                    backgroundStack.Push(new BackgroundScreenBlack());
+                    FileStream image = File.Open(Directory + @"\level.jpg", FileMode.Open);
+                    var background = new BackgroundScreenCustom(image);
+                    backgroundStack.Push(background);
+                    background.OnLoadComplete += _ =>
+                    {
+                        image.Close();
+                    };
+                }
+                else
+                {
+                    backgroundStack.Push(new BackgroundScreenDefault());
+                }
+            }
         }
 
         private void SetBeatmap(PAMetadata meta)
@@ -182,18 +217,28 @@ namespace StreamToolUI.Main.Beatmap
 
             System.Drawing.Bitmap bm;
 
-            if (File.Exists(Directory + @"\banner.jpg"))
-                bm = new System.Drawing.Bitmap(Directory + @"\banner.jpg");
-            else if (File.Exists(Directory + @"\level.jpg"))
-                bm = new System.Drawing.Bitmap(Directory + @"\level.jpg");
-            else
-                bm = new System.Drawing.Bitmap(Directory + @"\default.jpg");
+            if (Directory != null)
+            {
+                try
+                {
+                    if (File.Exists(Directory + @"\banner.jpg"))
+                        bm = new System.Drawing.Bitmap(Directory + @"\banner.jpg");
+                    else if (File.Exists(Directory + @"\level.jpg"))
+                        bm = new System.Drawing.Bitmap(Directory + @"\level.jpg");
+                    else
+                        bm = new System.Drawing.Bitmap(@"C:\Program Files (x86)\Steam\steamapps\common\Project Arrhythmia\beatmaps\editor\default.jpg");
 
-            if (File.Exists(directory + "image.png"))
-                File.Delete(directory + "image.png");
+                    if (File.Exists(directory + "image.png"))
+                        File.Delete(directory + "image.png");
 
-            bm.Save(directory + "image.png", ImageFormat.Png);
-            bm.Dispose();
+                    bm.Save(directory + "image.png", ImageFormat.Png);
+                    bm.Dispose();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
     }
 }

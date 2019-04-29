@@ -19,35 +19,28 @@ using osu.Framework.Graphics.Textures;
 using System.IO;
 using Newtonsoft.Json;
 using StreamToolUI.Main.Screens.Components;
+using StreamToolUI.Main.Screens.Backgrounds;
 
 namespace StreamToolUI.Main.Screens
 {
-    public class MainScreen : Screen
+    public class MainScreen : StreamScreen
     {
-        private Box background;
+        private BackgroundScreenDefault background;
 
-        public MainScreen()
+        protected override BackgroundScreen CreateBackground() => background;
+
+        [BackgroundDependencyLoader]
+        private void load()
         {
             AddRangeInternal(new Drawable[]
             {
-                background = new Box
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    FillMode = FillMode.Fill,
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre
-                },
                 new BeatmapLevelListing
                 {
                     RelativeSizeAxes = Axes.Both
                 }
             });
-        }
 
-        [BackgroundDependencyLoader]
-        private void load(TextureStore tex)
-        {
-            background.Texture = tex.Get("bg");
+            LoadComponentAsync(background = new BackgroundScreenDefault());
         }
     }
 }

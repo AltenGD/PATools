@@ -13,7 +13,7 @@ namespace StreamToolUI.Main
         {
             Children = new Drawable[]
             {
-                stack = new ScreenStack
+                stack = new StreamGameScreenStack
                 {
                     RelativeSizeAxes = Axes.Both
                 }
