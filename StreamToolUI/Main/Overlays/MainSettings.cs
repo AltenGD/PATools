@@ -12,9 +12,9 @@ namespace StreamToolUI.Main.Overlays
     {
         protected override IEnumerable<SettingsSection> CreateSections() => new SettingsSection[]
         {
-            new TestSection(),
-            new UISection(),
-            new UISection()
+            new GeneralSection(),
+            new GraphicsSection(),
+            new DirectorySection(),
         };
 
         protected override Drawable CreateHeader() => new SettingsHeader("Settings", "Change the way this tool behaves");

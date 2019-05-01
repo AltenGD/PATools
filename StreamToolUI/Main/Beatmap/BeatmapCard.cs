@@ -7,25 +7,18 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Effects;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
-using osu.Framework.Graphics.Textures;
-using osu.Framework.Graphics.UserInterface;
-using osu.Framework.Input.Bindings;
-using osu.Framework.Input.Events;
-using osu.Framework.Logging;
-using osu.Framework.Screens;
 using osuTK;
 using osuTK.Graphics;
 using StreamingTool.Main.Properties.PA;
 using StreamToolUI.Main.Beatmap.Components;
-using StreamToolUI.Main.Graphics.Sprites;
+using StreamToolUI.Main.Configuration;
 using StreamToolUI.Main.Screens;
 using StreamToolUI.Main.Screens.Backgrounds;
 using System;
-using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Threading.Tasks;
-
+using System.Text;
+using static StreamToolUI.Main.Configuration.StreamGameConfigManager;
 using static StreamToolUI.Main.Graphics.Sprites.StreamGameFont;
 
 namespace StreamToolUI.Main.Beatmap
@@ -34,9 +27,13 @@ namespace StreamToolUI.Main.Beatmap
     {
         private Vector2 size = new Vector2(330, 150);
         private BeatmapUsecase beatmapUseCase;
+        private Bindable<bool> changeBackground;
 
         [Resolved(canBeNull: true)]
         private BackgroundScreenStack backgroundStack { get; set; }
+
+        [Resolved]
+        private StreamGameConfigManager config { get; set; }
 
         public PAMetadata meta;
         public Box Background;
@@ -129,6 +126,20 @@ namespace StreamToolUI.Main.Beatmap
             Selected.ValueChanged += Select;
         }
 
+        protected override void LoadComplete()
+        {
+            changeBackground = new Bindable<bool>(true);
+            changeBackground = config.GetBindable<bool>(StreamGameSettings.ChangeBackground);
+
+            changeBackground.ValueChanged += change =>
+            {
+                if (!change.NewValue)
+                    backgroundStack.Push(new BackgroundScreenDefault());
+            };
+
+            base.LoadComplete();
+        }
+
         private void Select(ValueChangedEvent<bool> value)
         {
             /*EdgeEffectParameters selectedParams = new EdgeEffectParameters
@@ -160,31 +171,34 @@ namespace StreamToolUI.Main.Beatmap
 
             if (Directory != null)
             {
-                if (File.Exists(Directory + @"\banner.jpg"))
+                if (changeBackground.Value)
                 {
-                    backgroundStack.Push(new BackgroundScreenBlack());
-                    FileStream image = File.Open(Directory + @"\banner.jpg", FileMode.Open);
-                    var background = new BackgroundScreenCustom(image);
-                    backgroundStack.Push(background);
-                    background.OnLoadComplete += _ =>
+                    if (File.Exists(Directory + @"\banner.jpg"))
                     {
-                        image.Close();
-                    };
-                }
-                else if (File.Exists(Directory + @"\level.jpg"))
-                {
-                    backgroundStack.Push(new BackgroundScreenBlack());
-                    FileStream image = File.Open(Directory + @"\level.jpg", FileMode.Open);
-                    var background = new BackgroundScreenCustom(image);
-                    backgroundStack.Push(background);
-                    background.OnLoadComplete += _ =>
+                        backgroundStack.Push(new BackgroundScreenBlack());
+                        FileStream image = File.Open(Directory + @"\banner.jpg", FileMode.Open);
+                        var background = new BackgroundScreenCustom(image);
+                        backgroundStack.Push(background);
+                        background.OnLoadComplete += _ =>
+                        {
+                            image.Close();
+                        };
+                    }
+                    else if (File.Exists(Directory + @"\level.jpg"))
                     {
-                        image.Close();
-                    };
-                }
-                else
-                {
-                    backgroundStack.Push(new BackgroundScreenDefault());
+                        backgroundStack.Push(new BackgroundScreenBlack());
+                        FileStream image = File.Open(Directory + @"\level.jpg", FileMode.Open);
+                        var background = new BackgroundScreenCustom(image);
+                        backgroundStack.Push(background);
+                        background.OnLoadComplete += _ =>
+                        {
+                            image.Close();
+                        };
+                    }
+                    else
+                    {
+                        backgroundStack.Push(new BackgroundScreenDefault());
+                    }
                 }
             }
         }
@@ -192,7 +206,10 @@ namespace StreamToolUI.Main.Beatmap
         private void SetBeatmap(PAMetadata meta)
         {
             //TODO: Setting
-            var directory = @"D:\PAStream\Beatmap\";
+            var directory = config.Get<string>(StreamGameSettings.StreamDirectory);
+
+            if (!directory.EndsWith(@"\"))
+                directory += @"\";
 
             //Artist
             File.WriteAllText(directory + @"artist\link.txt", meta.Artist.Link);
@@ -226,7 +243,7 @@ namespace StreamToolUI.Main.Beatmap
                     else if (File.Exists(Directory + @"\level.jpg"))
                         bm = new System.Drawing.Bitmap(Directory + @"\level.jpg");
                     else
-                        bm = new System.Drawing.Bitmap(@"C:\Program Files (x86)\Steam\steamapps\common\Project Arrhythmia\beatmaps\editor\default.jpg");
+                        bm = new System.Drawing.Bitmap(config.Get<string>(StreamGameSettings.DefaultImage));
 
                     if (File.Exists(directory + "image.png"))
                         File.Delete(directory + "image.png");

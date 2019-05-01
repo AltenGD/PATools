@@ -76,7 +76,7 @@ namespace StreamToolUI.Main.Overlays.Settings
                     {
                         new SpriteText
                         {
-                            Font = StreamGameFont.GetFont(size: header_size),
+                            Font = StreamGameFont.GetFont(StreamGameFont.Typeface.Purista, header_size),
                             Text = Header,
                             Colour = StreamToolColors.FromHex("FFC634"),
                             Margin = new MarginPadding { Left = SettingsOverlay.CONTENT_MARGINS, Right = SettingsOverlay.CONTENT_MARGINS }

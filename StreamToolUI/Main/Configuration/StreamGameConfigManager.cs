@@ -12,15 +12,13 @@ namespace StreamToolUI.Main.Configuration
         {
             base.InitialiseDefaults();
 
-            //UI
-            Set(StreamGameSettings.ChangeBackground, true);
-
             //Directories
             Set(StreamGameSettings.DefaultImage, @"C:\Program Files (x86)\Steam\steamapps\common\Project Arrhythmia\beatmaps\editor\default.jpg");
-            Set(StreamGameSettings.StreamDirectory, @"D:\PAStream\Beatmap");
+            Set(StreamGameSettings.StreamDirectory, @"D:\PAStream\Beatmap\");
 
             //Graphics
             Set(StreamGameSettings.ShowFpsDisplay, false);
+            Set(StreamGameSettings.ChangeBackground, true);
             Set(StreamGameSettings.MenuParallax, true);
 
             //Other
@@ -34,11 +32,14 @@ namespace StreamToolUI.Main.Configuration
 
         public enum StreamGameSettings
         {
-            ChangeBackground,
-            ShowFpsDisplay,
-            MenuParallax,
-            StreamDirectory,
+            //Directories
             DefaultImage,
+            StreamDirectory,
+
+            //Graphics
+            ShowFpsDisplay,
+            ChangeBackground,
+            MenuParallax,
 
             //Other
             Slider1,

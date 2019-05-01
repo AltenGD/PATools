@@ -20,6 +20,10 @@ using System.IO;
 using Newtonsoft.Json;
 using StreamToolUI.Main.Screens.Components;
 using StreamToolUI.Main.Screens.Backgrounds;
+using StreamToolUI.Main.Overlays;
+using static StreamToolUI.Main.Containers.GlobalActionContainer;
+using osu.Framework.Threading;
+using System.Diagnostics;
 
 namespace StreamToolUI.Main.Screens
 {
@@ -34,10 +38,7 @@ namespace StreamToolUI.Main.Screens
         {
             AddRangeInternal(new Drawable[]
             {
-                new BeatmapLevelListing
-                {
-                    RelativeSizeAxes = Axes.Both
-                }
+                new BeatmapLevelListing { RelativeSizeAxes = Axes.Both },
             });
 
             LoadComponentAsync(background = new BackgroundScreenDefault());

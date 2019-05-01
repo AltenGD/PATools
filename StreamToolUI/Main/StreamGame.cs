@@ -2,6 +2,7 @@
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Input.Bindings;
+using osu.Framework.Input.Events;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
 using osu.Framework.Threading;
@@ -17,7 +18,7 @@ using static StreamToolUI.Main.Containers.GlobalActionContainer;
 
 namespace StreamToolUI.Main
 {
-    public class StreamGame : StreamGameBase, IKeyBindingHandler<GlobalAction>
+    public class StreamGame : StreamGameBase
     {
         private ScreenStack stack;
 
@@ -30,8 +31,15 @@ namespace StreamToolUI.Main
             base.LoadComplete();
             AddRange(new Drawable[]
             {
-                stack = new StreamGameScreenStack { RelativeSizeAxes = Axes.Both },
-                leftFloatingOverlayContent = new Container { RelativeSizeAxes = Axes.Both },
+                new GlobalActionContainer()
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Children = new Drawable[]
+                    {
+                        stack = new StreamGameScreenStack { RelativeSizeAxes = Axes.Both },
+                        leftFloatingOverlayContent = new Container { RelativeSizeAxes = Axes.Both },
+                    }
+                }
             });
 
             stack.ScreenPushed += screenPushed;
@@ -43,6 +51,8 @@ namespace StreamToolUI.Main
                 Add(new SquirrelUpdateManager());
 
             loadComponentSingleFile(settings = new MainSettings(), leftFloatingOverlayContent.Add);
+
+            //settings.ToggleVisibility();
         }
 
         private void screenPushed(IScreen lastScreen, IScreen newScreen)
@@ -107,19 +117,14 @@ namespace StreamToolUI.Main
             });
         }
 
-        public bool OnPressed(GlobalAction action)
+        //TODO: Make GlobalActionContainer work.
+        protected override bool OnKeyDown(KeyDownEvent e)
         {
-            switch (action)
-            {
-                case GlobalAction.ToggleSettings:
-                    settings.ToggleVisibility();
-                    break;
-            }
+            if (e.ControlPressed && e.Key == osuTK.Input.Key.O)
+                settings.ToggleVisibility();
 
-            return true;
+            return base.OnKeyDown(e);
         }
-
-        public bool OnReleased(GlobalAction action) => false;
 
         private Container leftFloatingOverlayContent;
     }
