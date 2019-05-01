@@ -1,4 +1,5 @@
 ﻿using osu.Framework.Allocation;
+using osu.Framework.Audio.Track;
 using osu.Framework.Bindables;
 using osu.Framework.Extensions.Color4Extensions;
 using osu.Framework.Graphics;
@@ -135,6 +136,20 @@ namespace StreamToolUI.Main.Beatmap
             {
                 if (!change.NewValue)
                     backgroundStack.Push(new BackgroundScreenDefault());
+            };
+
+            FileStream music = File.Open(Directory + @"\level.ogg", FileMode.Open);
+            PlayButton button;
+
+            Add(button = new PlayButton(new TrackBass(music) { Looping = true })
+            {
+                Size = new Vector2(30),
+                Margin = new MarginPadding(10)
+            });
+
+            button.OnLoadComplete += loaded =>
+            {
+                //music.Close();
             };
 
             base.LoadComplete();

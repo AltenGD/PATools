@@ -15,6 +15,7 @@ namespace StreamToolUI.Main.Overlays
             new GeneralSection(),
             new GraphicsSection(),
             new DirectorySection(),
+            new AudioSection()
         };
 
         protected override Drawable CreateHeader() => new SettingsHeader("Settings", "Change the way this tool behaves");
