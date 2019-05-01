@@ -15,6 +15,8 @@ namespace StreamToolUI.Main.Screens
 
         protected BackgroundScreen Background => backgroundStack?.CurrentScreen as BackgroundScreen;
 
+        protected new StreamGameBase Game => base.Game as StreamGameBase;
+
         private BackgroundScreen localBackground;
 
         [Resolved(canBeNull: true)]

@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Main\Containers\GlobalActionContainer.cs~RF3933c730.TMP" />
     <None Remove="Resources\Fonts\Neogrey Medium.bin" />
     <None Remove="Resources\Fonts\Neogrey Medium_0.png" />
     <None Remove="Resources\Fonts\Neogrey.bin" />
@@ -27,6 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="ppy.osu.Framework" Version="2019.427.0" />
+    <PackageReference Include="ppy.squirrel.windows" Version="1.9.0.3" />
   </ItemGroup>
 
   <ItemGroup>

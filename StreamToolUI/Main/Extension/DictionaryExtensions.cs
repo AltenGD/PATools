@@ -18,12 +18,6 @@ namespace StreamToolUI.Main.Extension
                 result.Add(kvp.Key, kvp.Value);
             return result;
         }
-        /// <summary>Gets the value of a specified key in the dictionary if it exists, otherwise the default value of the value type.</summary>
-        /// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
-        /// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
-        /// <param name="d">The dictionary whose value to get at the specified key.</param>
-        /// <param name="key">The key to get the value of, if it exists in the dictionary.</param>
-        public static TValue ValueOrDefault<TKey, TValue>(this Dictionary<TKey, TValue> d, TKey key) => d.ContainsKey(key) ? d[key] : default;
         /// <summary>Sets the value of a key if it exists, otherwise creates a new key with the specified value.</summary>
         /// <typeparam name="TKey">The type of the keys in the dictionary.</typeparam>
         /// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
