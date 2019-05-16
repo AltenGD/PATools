@@ -18,7 +18,6 @@ using StreamToolUI.Main.Screens.Backgrounds;
 using System;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Text;
 using static StreamToolUI.Main.Configuration.StreamGameConfigManager;
 using static StreamToolUI.Main.Graphics.Sprites.StreamGameFont;
 
@@ -138,7 +137,7 @@ namespace StreamToolUI.Main.Beatmap
                     backgroundStack.Push(new BackgroundScreenDefault());
             };
 
-            FileStream music = File.Open(Directory + @"\level.ogg", FileMode.Open);
+            FileStream music = File.OpenRead(Directory + @"\level.ogg");
             PlayButton button;
 
             Add(button = new PlayButton(new TrackBass(music) { Looping = true })
@@ -146,11 +145,6 @@ namespace StreamToolUI.Main.Beatmap
                 Size = new Vector2(30),
                 Margin = new MarginPadding(10)
             });
-
-            button.OnLoadComplete += loaded =>
-            {
-                //music.Close();
-            };
 
             base.LoadComplete();
         }

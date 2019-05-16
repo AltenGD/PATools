@@ -20,6 +20,8 @@ using System.IO;
 using Newtonsoft.Json;
 using StreamToolUI.Main.Graphics.UI;
 using StreamToolUI.Main.Extension;
+using static StreamToolUI.Main.Configuration.StreamGameConfigManager;
+using StreamToolUI.Main.Configuration;
 
 namespace StreamToolUI.Main.Screens.Components
 {
@@ -28,6 +30,9 @@ namespace StreamToolUI.Main.Screens.Components
         private FillFlowContainer beatmapContainer;
         private List<BeatmapCard> cards;
         private TextBox searchQuery;
+
+        [Resolved]
+        private StreamGameConfigManager config { get; set; }
 
         public BeatmapLevelListing()
         {
@@ -73,19 +78,19 @@ namespace StreamToolUI.Main.Screens.Components
 
                 if (File.Exists(directoryName + @"\banner.jpg"))
                 {
-                    FileStream image = File.Open(directoryName + @"\banner.jpg", FileMode.Open);
+                    FileStream image = File.OpenRead(directoryName + @"\banner.jpg");
                     card.Background.Texture = Texture.FromStream(image);
                     image.Close();
                 }
                 else if (File.Exists(directoryName + @"\level.jpg"))
                 {
-                    FileStream image = File.Open(directoryName + @"\level.jpg", FileMode.Open);
+                    FileStream image = File.OpenRead(directoryName + @"\level.jpg");
                     card.Background.Texture = Texture.FromStream(image);
                     image.Close();
                 }
                 else
                 {
-                    FileStream image = File.Open(@"C:\Program Files (x86)\Steam\steamapps\common\Project Arrhythmia\beatmaps\editor\default.jpg", FileMode.Open);
+                    FileStream image = File.OpenRead(config.Get<string>(StreamGameSettings.DefaultImage));
                     card.Background.Texture = Texture.FromStream(image);
                     image.Close();
                 }
@@ -106,7 +111,7 @@ namespace StreamToolUI.Main.Screens.Components
                 };
             }*/
 
-            beatmapContainer.AddRange(cards);
+                    beatmapContainer.AddRange(cards);
         }
 
         protected override void LoadComplete()
