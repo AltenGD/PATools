@@ -1,4 +1,6 @@
-﻿namespace StreamingTool.Main.Properties.PA
+﻿using Newtonsoft.Json;
+
+namespace StreamingTool.Main.Properties.PA
 {
     public class PACSong
     {
@@ -10,7 +12,7 @@
 
         public double bpm { get; set; }
 
-        /// <summary>StartTime</summary>
-        public double t { get; set; }
+        [JsonProperty("t")]
+        public double StartTime { get; set; }
     }
 }

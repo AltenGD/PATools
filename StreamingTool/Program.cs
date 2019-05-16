@@ -45,20 +45,20 @@ namespace StreamingTool
                 File.WriteAllText(STRDir + @"artist\name.txt", CurrentInfo.Info.Artist.Name);
 
                 //Beatmap
-                File.WriteAllText(STRDir + @"beatmap\date_edited.txt", CurrentInfo.Info.Beatmap.Date_edited);
-                File.WriteAllText(STRDir + @"beatmap\game_version.txt", CurrentInfo.Info.Beatmap.Game_version);
-                File.WriteAllText(STRDir + @"beatmap\version_number.txt", CurrentInfo.Info.Beatmap.Version_number.ToString());
-                File.WriteAllText(STRDir + @"beatmap\workshop_id.txt", CurrentInfo.Info.Beatmap.Workshop_id.ToString());
+                File.WriteAllText(STRDir + @"beatmap\date_edited.txt", CurrentInfo.Info.Beatmap.DateEdited);
+                File.WriteAllText(STRDir + @"beatmap\game_version.txt", CurrentInfo.Info.Beatmap.GameVersion);
+                File.WriteAllText(STRDir + @"beatmap\version_number.txt", CurrentInfo.Info.Beatmap.VersionNumber.ToString());
+                File.WriteAllText(STRDir + @"beatmap\workshop_id.txt", CurrentInfo.Info.Beatmap.WorkshopID.ToString());
 
                 //Creator
-                File.WriteAllText(STRDir + @"creator\steam_id.txt", CurrentInfo.Info.Creator.Steam_id.ToString());
-                File.WriteAllText(STRDir + @"creator\steam_name.txt", CurrentInfo.Info.Creator.Steam_name);
+                File.WriteAllText(STRDir + @"creator\steam_id.txt", CurrentInfo.Info.Creator.ID.ToString());
+                File.WriteAllText(STRDir + @"creator\steam_name.txt", CurrentInfo.Info.Creator.Name);
 
                 //Song
                 File.WriteAllText(STRDir + @"song\bpm.txt", CurrentInfo.Info.Song.bpm.ToString());
                 File.WriteAllText(STRDir + @"song\description.txt", CurrentInfo.Info.Song.Description);
                 File.WriteAllText(STRDir + @"song\difficulty.txt", CurrentInfo.Info.Song.Difficulty.ToString()); //TODO: format this
-                File.WriteAllText(STRDir + @"song\t.txt", CurrentInfo.Info.Song.t.ToString());
+                File.WriteAllText(STRDir + @"song\t.txt", CurrentInfo.Info.Song.StartTime.ToString());
                 File.WriteAllText(STRDir + @"song\title.txt", CurrentInfo.Info.Song.Title);
 
                 //Image

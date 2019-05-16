@@ -90,7 +90,7 @@ namespace StreamToolUI.Main.Screens.Components
                 }
                 else
                 {
-                    FileStream image = File.OpenRead(config.Get<string>(StreamGameSettings.DefaultImage));
+                    FileStream image = File.OpenRead(@"C:\Program Files (x86)\Steam\steamapps\common\Project Arrhythmia\beatmaps\editor\default.jpg");
                     card.Background.Texture = Texture.FromStream(image);
                     image.Close();
                 }

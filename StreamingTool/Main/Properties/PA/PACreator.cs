@@ -1,9 +1,13 @@
-﻿namespace StreamingTool.Main.Properties.PA
+﻿using Newtonsoft.Json;
+
+namespace StreamingTool.Main.Properties.PA
 {
     public class PACreator
     {
-        public string Steam_name { get; set; }
+        [JsonProperty("Steam_name")]
+        public string Name { get; set; }
 
-        public int Steam_id { get; set; }
+        [JsonProperty("Steam_id")]
+        public int ID { get; set; }
     }
 }

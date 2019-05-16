@@ -1,14 +1,20 @@
-﻿namespace StreamingTool.Main.Properties.PA
+﻿using Newtonsoft.Json;
+
+namespace StreamingTool.Main.Properties.PA
 {
     public class PACBeatmap
     {
-        public string Date_edited { get; set; }
+        [JsonProperty("Date_edited")]
+        public string DateEdited { get; set; }
 
         /// <summary>string because of "MajorVersion.MinorVersion.Build"</summary>
-        public string Game_version { get; set; }
+        [JsonProperty("Game_version")]
+        public string GameVersion { get; set; }
 
-        public int Version_number { get; set; }
+        [JsonProperty("Version_number")]
+        public int VersionNumber { get; set; }
 
-        public int Workshop_id { get; set; }
+        [JsonProperty("Workshop_id")]
+        public int WorkshopID { get; set; }
     }
 }

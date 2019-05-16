@@ -225,20 +225,20 @@ namespace StreamToolUI.Main.Beatmap
             File.WriteAllText(directory + @"artist\name.txt", meta.Artist.Name);
 
             //Beatmap
-            File.WriteAllText(directory + @"beatmap\date_edited.txt", meta.Beatmap.Date_edited);
-            File.WriteAllText(directory + @"beatmap\game_version.txt", meta.Beatmap.Game_version);
-            File.WriteAllText(directory + @"beatmap\version_number.txt", meta.Beatmap.Version_number.ToString());
-            File.WriteAllText(directory + @"beatmap\workshop_id.txt", meta.Beatmap.Workshop_id.ToString());
+            File.WriteAllText(directory + @"beatmap\date_edited.txt", meta.Beatmap.DateEdited);
+            File.WriteAllText(directory + @"beatmap\game_version.txt", meta.Beatmap.GameVersion);
+            File.WriteAllText(directory + @"beatmap\version_number.txt", meta.Beatmap.VersionNumber.ToString());
+            File.WriteAllText(directory + @"beatmap\workshop_id.txt", meta.Beatmap.WorkshopID.ToString());
 
             //Creator
-            File.WriteAllText(directory + @"creator\steam_id.txt", meta.Creator.Steam_id.ToString());
-            File.WriteAllText(directory + @"creator\steam_name.txt", meta.Creator.Steam_name);
+            File.WriteAllText(directory + @"creator\steam_id.txt", meta.Creator.ID.ToString());
+            File.WriteAllText(directory + @"creator\steam_name.txt", meta.Creator.Name);
 
             //Song
             File.WriteAllText(directory + @"song\bpm.txt", meta.Song.bpm.ToString());
             File.WriteAllText(directory + @"song\description.txt", meta.Song.Description);
             File.WriteAllText(directory + @"song\difficulty.txt", meta.Song.Difficulty.ToString()); //TODO: format this
-            File.WriteAllText(directory + @"song\t.txt", meta.Song.t.ToString());
+            File.WriteAllText(directory + @"song\t.txt", meta.Song.StartTime.ToString());
             File.WriteAllText(directory + @"song\title.txt", meta.Song.Title);
 
             System.Drawing.Bitmap bm;
