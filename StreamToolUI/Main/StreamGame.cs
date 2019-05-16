@@ -31,13 +31,20 @@ namespace StreamToolUI.Main
             base.LoadComplete();
             AddRange(new Drawable[]
             {
-                new GlobalActionContainer()
+                new StreamGameTooltipContainer()
                 {
                     RelativeSizeAxes = Axes.Both,
                     Children = new Drawable[]
                     {
-                        stack = new StreamGameScreenStack { RelativeSizeAxes = Axes.Both },
-                        leftFloatingOverlayContent = new Container { RelativeSizeAxes = Axes.Both },
+                        new GlobalActionContainer()
+                        {
+                            RelativeSizeAxes = Axes.Both,
+                            Children = new Drawable[]
+                            {
+                                stack = new StreamGameScreenStack { RelativeSizeAxes = Axes.Both },
+                                leftFloatingOverlayContent = new Container { RelativeSizeAxes = Axes.Both },
+                            }
+                        }
                     }
                 }
             });

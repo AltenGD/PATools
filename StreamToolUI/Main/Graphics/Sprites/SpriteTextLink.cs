@@ -33,6 +33,7 @@ namespace StreamToolUI.Main.Graphics.Sprites
         private string url;
 
         public string TooltipText { get; set; }
+
         public SpriteTextLink(string url)
             => this.url = url;
 

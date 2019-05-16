@@ -108,9 +108,10 @@ namespace StreamToolUI.Main.Beatmap.Components
                 Colour = Color4.Black
             });
 
-            textContainer.AddText(new SpriteTextLink("https://github.com/ppy/osu/blob/master/osu.Game/Users/User.cs")
+            textContainer.AddText(new SpriteTextLink(null)
             {
-                Text = meta.Creator.Name
+                Text = meta.Creator.Name,
+                TooltipText = "Link is not working due to some inconveniences."
             });
         }
     }
