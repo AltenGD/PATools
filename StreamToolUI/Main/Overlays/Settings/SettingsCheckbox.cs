@@ -1,6 +1,5 @@
 ﻿using osu.Framework.Graphics;
 using StreamToolUI.Main.Graphics.UI;
-using osuTK;
 
 namespace StreamToolUI.Main.Overlays.Settings
 {

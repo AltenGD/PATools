@@ -6,7 +6,6 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
-using osuTK;
 using osuTK.Graphics;
 using StreamToolUI.Main.Graphics.Colors;
 
@@ -22,8 +21,6 @@ namespace StreamToolUI.Main.Beatmap.Components
 
         private Color4 hoverColour;
         private readonly SpriteIcon icon;
-
-        private const float transition_duration = 500;
 
         public PlayButton(Track track)
         {

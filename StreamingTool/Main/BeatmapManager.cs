@@ -10,8 +10,6 @@ namespace StreamingTool.Main
     {
         public BeatmapManager()
         {
-            //will all default to either "" or null
-            //TODO: add text to inform the user
             CurrentInfo.Info = new PAMetadata
             {
                 Artist = new PAArtist(),

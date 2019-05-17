@@ -1,7 +1,6 @@
 ﻿using osu.Framework;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Input.Bindings;
 using osu.Framework.Input.Events;
 using osu.Framework.Logging;
 using osu.Framework.Screens;
@@ -14,7 +13,6 @@ using StreamToolUI.Main.Tools;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using static StreamToolUI.Main.Containers.GlobalActionContainer;
 
 namespace StreamToolUI.Main
 {
@@ -58,8 +56,6 @@ namespace StreamToolUI.Main
                 Add(new SquirrelUpdateManager());
 
             loadComponentSingleFile(settings = new MainSettings(), leftFloatingOverlayContent.Add);
-
-            //settings.ToggleVisibility();
         }
 
         private void screenPushed(IScreen lastScreen, IScreen newScreen)
@@ -124,7 +120,6 @@ namespace StreamToolUI.Main
             });
         }
 
-        //TODO: Make GlobalActionContainer work.
         protected override bool OnKeyDown(KeyDownEvent e)
         {
             if (e.ControlPressed && e.Key == osuTK.Input.Key.O)

@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using osuTK;
-using osuTK.Graphics;
-using osu.Framework.Allocation;
-using osu.Framework.Audio;
-using osu.Framework.Audio.Sample;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.UserInterface;
 using osu.Framework.Graphics.Cursor;
@@ -119,18 +115,14 @@ namespace StreamToolUI.Main.Graphics.UI
             Nub.MoveToX(RangePadding + UsableWidth * value, 250, Easing.OutQuint);
         }
 
-        /// <summary>
-        /// Removes all non-significant digits, keeping at most a requested number of decimal digits.
-        /// </summary>
+        /// <summary>Removes all non-significant digits, keeping at most a requested number of decimal digits.</summary>
         /// <param name="d">The decimal to normalize.</param>
         /// <param name="sd">The maximum number of decimal digits to keep. The final result may have fewer decimal digits than this value.</param>
         /// <returns>The normalised decimal.</returns>
         private decimal normalise(decimal d, int sd)
             => decimal.Parse(Math.Round(d, sd).ToString(string.Concat("0.", new string('#', sd)), CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
 
-        /// <summary>
-        /// Finds the number of digits after the decimal.
-        /// </summary>
+        /// <summary>Finds the number of digits after the decimal.</summary>
         /// <param name="d">The value to find the number of decimal digits for.</param>
         /// <returns>The number decimal digits.</returns>
         private int findPrecision(decimal d)

@@ -1,7 +1,4 @@
-﻿using osu.Framework.Allocation;
-using osu.Framework.Graphics;
-using osu.Framework.Graphics.Containers;
-using osuTK.Graphics;
+﻿using osu.Framework.Graphics;
 using StreamToolUI.Main.Overlays.Settings;
 using StreamToolUI.Main.Overlays.Settings.Sections;
 using System.Collections.Generic;

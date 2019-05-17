@@ -14,9 +14,7 @@ namespace StreamToolUI.Main.Containers
     {
         public const float DEFAULT_PARALLAX_AMOUNT = 0.02f;
 
-        /// <summary>
-        /// The amount of parallax movement. Negative values will reverse the direction of parallax relative to user input.
-        /// </summary>
+        /// <summary>The amount of parallax movement. Negative values will reverse the direction of parallax relative to user input.</summary>
         public float ParallaxAmount = DEFAULT_PARALLAX_AMOUNT;
 
         private Bindable<bool> parallaxEnabled;

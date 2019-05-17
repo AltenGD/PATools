@@ -6,9 +6,7 @@ using osu.Framework.Graphics.Containers;
 
 namespace StreamToolUI.Main.Containers
 {
-    /// <summary>
-    /// A container that can scroll to each section inside it.
-    /// </summary>
+    /// <summary>A container that can scroll to each section inside it.</summary>
     public class SectionsContainer<T> : Container<T>
         where T : Drawable
     {

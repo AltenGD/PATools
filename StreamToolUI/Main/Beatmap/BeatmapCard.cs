@@ -151,30 +151,13 @@ namespace StreamToolUI.Main.Beatmap
 
         private void Select(ValueChangedEvent<bool> value)
         {
-            /*EdgeEffectParameters selectedParams = new EdgeEffectParameters
-            {
-                Type = EdgeEffectType.Shadow,
-                Offset = new Vector2(0f, 4f),
-                Radius = 0.1f,
-                Colour = Color4.Black.Opacity(0.3f),
-            };
-
-            EdgeEffectParameters deselectedParams = new EdgeEffectParameters
-            {
-                Type = EdgeEffectType.Shadow,
-                Offset = new Vector2(0f, 2f),
-                Radius = 1f,
-                Colour = Color4.Black.Opacity(0.25f),
-            };*/
 
             switch (value.NewValue)
             {
                 case true:
-                    //TweenEdgeEffectTo(selectedParams, 500, Easing.OutExpo);
                     SetBeatmap(meta);
                     break;
                 case false:
-                    //TweenEdgeEffectTo(deselectedParams, 500, Easing.OutExpo);
                     break;
             }
 
@@ -185,24 +168,16 @@ namespace StreamToolUI.Main.Beatmap
                     if (File.Exists(Directory + @"\banner.jpg"))
                     {
                         backgroundStack.Push(new BackgroundScreenBlack());
-                        FileStream image = File.Open(Directory + @"\banner.jpg", FileMode.Open);
+                        FileStream image = File.OpenRead(Directory + @"\banner.jpg");
                         var background = new BackgroundScreenCustom(image);
                         backgroundStack.Push(background);
-                        background.OnLoadComplete += _ =>
-                        {
-                            image.Close();
-                        };
                     }
                     else if (File.Exists(Directory + @"\level.jpg"))
                     {
                         backgroundStack.Push(new BackgroundScreenBlack());
-                        FileStream image = File.Open(Directory + @"\level.jpg", FileMode.Open);
+                        FileStream image = File.OpenRead(Directory + @"\level.jpg");
                         var background = new BackgroundScreenCustom(image);
                         backgroundStack.Push(background);
-                        background.OnLoadComplete += _ =>
-                        {
-                            image.Close();
-                        };
                     }
                     else
                     {

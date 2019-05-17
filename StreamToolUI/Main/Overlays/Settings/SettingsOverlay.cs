@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using osuTK;
 using osuTK.Graphics;
 using osu.Framework.Allocation;
@@ -8,7 +6,6 @@ using osu.Framework.Extensions.IEnumerableExtensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
-using osu.Framework.Input.Events;
 using StreamToolUI.Main.Graphics.UI;
 using StreamToolUI.Main.Containers;
 

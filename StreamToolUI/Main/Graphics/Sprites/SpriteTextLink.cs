@@ -1,29 +1,10 @@
 ﻿using osu.Framework.Graphics.Cursor;
-using System.Collections.Generic;
-using System.Linq;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
-using osuTK;
-using osu.Framework.Bindables;
-using osu.Framework.Graphics.Containers;
-using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
-using osu.Framework.Graphics.UserInterface;
-using osu.Framework.Input.Bindings;
 using osu.Framework.Input.Events;
-using osu.Framework.Logging;
-using osu.Framework.Screens;
-using StreamToolUI.Main.Beatmap;
-using StreamingTool.Main.Properties.PA;
-using System;
-using System.Threading.Tasks;
-using osu.Framework.Graphics.Textures;
-using System.IO;
-using Newtonsoft.Json;
 using StreamToolUI.Main.Graphics.Colors;
 using osu.Framework.Platform;
-using osu.Framework.Graphics.Colour;
-using osuTK.Graphics;
 
 namespace StreamToolUI.Main.Graphics.Sprites
 {

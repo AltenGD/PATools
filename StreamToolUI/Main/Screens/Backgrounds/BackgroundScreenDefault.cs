@@ -1,7 +1,5 @@
 ﻿using osu.Framework.Allocation;
-using osu.Framework.Bindables;
 using osu.Framework.Graphics;
-using osu.Framework.MathUtils;
 using osu.Framework.Threading;
 
 namespace StreamToolUI.Main.Screens.Backgrounds

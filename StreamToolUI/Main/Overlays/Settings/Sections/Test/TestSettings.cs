@@ -1,7 +1,4 @@
-﻿using osu.Framework;
-using osu.Framework.Allocation;
-using osu.Framework.Graphics.UserInterface;
-using osu.Framework.Platform;
+﻿using osu.Framework.Allocation;
 
 namespace StreamToolUI.Main.Overlays.Settings.Sections.Test
 {

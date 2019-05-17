@@ -6,7 +6,7 @@ namespace StreamToolUI
 {
     public static class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             using (Game game = new StreamGame())
             {

@@ -1,27 +1,15 @@
-﻿using osu.Framework.Allocation;
-using osu.Framework.Bindables;
-using osu.Framework.Graphics;
+﻿using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Graphics.Shapes;
-using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.UserInterface;
-using osu.Framework.Input.Bindings;
-using osu.Framework.Input.Events;
-using osu.Framework.Logging;
-using osu.Framework.Screens;
-using osuTK;
 using StreamToolUI.Main.Beatmap;
 using StreamingTool.Main.Properties.PA;
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using osu.Framework.Graphics.Textures;
 using System.IO;
 using Newtonsoft.Json;
 using StreamToolUI.Main.Graphics.UI;
 using StreamToolUI.Main.Extension;
-using static StreamToolUI.Main.Configuration.StreamGameConfigManager;
-using StreamToolUI.Main.Configuration;
+using osuTK;
 
 namespace StreamToolUI.Main.Screens.Components
 {
@@ -30,9 +18,6 @@ namespace StreamToolUI.Main.Screens.Components
         private FillFlowContainer beatmapContainer;
         private List<BeatmapCard> cards;
         private TextBox searchQuery;
-
-        [Resolved]
-        private StreamGameConfigManager config { get; set; }
 
         public BeatmapLevelListing()
         {
@@ -80,19 +65,16 @@ namespace StreamToolUI.Main.Screens.Components
                 {
                     FileStream image = File.OpenRead(directoryName + @"\banner.jpg");
                     card.Background.Texture = Texture.FromStream(image);
-                    image.Close();
                 }
                 else if (File.Exists(directoryName + @"\level.jpg"))
                 {
                     FileStream image = File.OpenRead(directoryName + @"\level.jpg");
                     card.Background.Texture = Texture.FromStream(image);
-                    image.Close();
                 }
                 else
                 {
                     FileStream image = File.OpenRead(@"C:\Program Files (x86)\Steam\steamapps\common\Project Arrhythmia\beatmaps\editor\default.jpg");
                     card.Background.Texture = Texture.FromStream(image);
-                    image.Close();
                 }
 
                 cards.Add(card);
@@ -111,7 +93,7 @@ namespace StreamToolUI.Main.Screens.Components
                 };
             }*/
 
-                    beatmapContainer.AddRange(cards);
+            beatmapContainer.AddRange(cards);
         }
 
         protected override void LoadComplete()

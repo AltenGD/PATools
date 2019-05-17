@@ -4,11 +4,11 @@ namespace StreamingTool.Main.Properties.PA
 {
     public class PACSong
     {
-        public string Title { get; set; }
+        public string Title { get; set; } = "Unknown Title";
 
-        public int Difficulty { get; set; }
+        public int Difficulty { get; set; } = 0;
 
-        public string Description { get; set; }
+        public string Description { get; set; } = "Unknown Description";
 
         public double bpm { get; set; }
 

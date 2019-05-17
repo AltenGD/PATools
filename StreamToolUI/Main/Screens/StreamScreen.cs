@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using osu.Framework.Allocation;
-using osu.Framework.Audio;
-using osu.Framework.Audio.Sample;
+﻿using osu.Framework.Allocation;
 using osu.Framework.Bindables;
 using osu.Framework.Graphics;
-using osu.Framework.Input.Bindings;
 using osu.Framework.Screens;
 
 namespace StreamToolUI.Main.Screens
@@ -46,10 +42,8 @@ namespace StreamToolUI.Main.Screens
             return false;
         }
 
-        /// <summary>
-        /// Override to create a BackgroundMode for the current screen.
-        /// Note that the instance created may not be the used instance if it matches the BackgroundMode equality clause.
-        /// </summary>
+        /// <summary> Override to create a BackgroundMode for the current screen.
+        /// Note that the instance created may not be the used instance if it matches the BackgroundMode equality clause.</summary>
         protected virtual BackgroundScreen CreateBackground() => null;
     }
 }

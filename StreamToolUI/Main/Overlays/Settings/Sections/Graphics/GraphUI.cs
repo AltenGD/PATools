@@ -1,9 +1,5 @@
-﻿using osu.Framework;
-using osu.Framework.Allocation;
-using osu.Framework.Bindables;
+﻿using osu.Framework.Allocation;
 using osu.Framework.Graphics;
-using osu.Framework.Graphics.UserInterface;
-using osu.Framework.Platform;
 using StreamToolUI.Main.Configuration;
 using static StreamToolUI.Main.Configuration.StreamGameConfigManager;
 
